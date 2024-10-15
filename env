@@ -14,29 +14,32 @@
 # ENVIRONMENT
 #--------------------------------------------------------------------
 
-# CI_ENVIRONMENT = production
+CI_ENVIRONMENT = development
 
 #--------------------------------------------------------------------
 # APP
 #--------------------------------------------------------------------
 
-# app.baseURL = ''
+app.baseURL = 'http://bookle.local/'
 # If you have trouble with `.`, you could also use `_`.
 # app_baseURL = ''
-# app.forceGlobalSecureRequests = false
+app.forceGlobalSecureRequests = false
 # app.CSPEnabled = false
+app.appTimezone = 'Asia/Ho_Chi_Minh'
 
 #--------------------------------------------------------------------
 # DATABASE
 #--------------------------------------------------------------------
 
-# database.default.hostname = localhost
-# database.default.database = ci4
-# database.default.username = root
-# database.default.password = root
-# database.default.DBDriver = MySQLi
-# database.default.DBPrefix =
-# database.default.port = 3306
+database.default.hostname = localhost
+database.default.database = bookle_db
+database.default.username = root
+database.default.password =
+database.default.DBDriver = MySQLi
+database.default.DBPrefix =
+database.charset = utf8mb4
+database.DBCollat = utf8mb4_unicode_ci
+database.default.port = 3306
 
 # If you use MySQLi as tests, first update the values of Config\Database::$tests.
 # database.tests.hostname = localhost
@@ -50,20 +53,23 @@
 # database.tests.port = 3306
 
 #--------------------------------------------------------------------
-# ENCRYPTION
+# COOKIE
 #--------------------------------------------------------------------
 
-# encryption.key =
+cookie.expires = 604800
+cookie.domain = '.bookle.local'
+cookie.secure = false
 
 #--------------------------------------------------------------------
 # SESSION
 #--------------------------------------------------------------------
 
-# session.driver = 'CodeIgniter\Session\Handlers\FileHandler'
-# session.savePath = null
+session.driver = 'CodeIgniter\Session\Handlers\DatabaseHandler'
+session.savePath = 'ci_sessions'
+session.cookieName = 'bookle_session'
 
 #--------------------------------------------------------------------
 # LOGGER
 #--------------------------------------------------------------------
 
-# logger.threshold = 4
+logger.threshold = 4

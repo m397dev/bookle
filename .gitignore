@@ -124,3 +124,12 @@ nb-configuration.xml
 
 /results/
 /phpunit*.xml
+
+# Cache
+*.cache
+.php-cs-fixer.cache
+
+# Asset
+!public/assets/admin/vendor
+!public/assets/shop/vendor
+!public/vendor

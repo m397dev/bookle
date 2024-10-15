@@ -1,0 +1,51 @@
+version: "3.7"
+
+services:
+  mysql:
+    container_name: bookle-mysql
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    image: mariadb
+    environment:
+      - MYSQL_ROOT_PASSWORD=ey%P!MnD!T3M638H
+      - MYSQL_DATABASE=bookle_db
+      - MYSQL_USER=bookle_admin
+      - MYSQL_PASSWORD=&Wz)qJFY9qessh(f
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    ports:
+      - "3306:3306"
+
+  phpmyadmin:
+    container_name: bookle-phpmyadmin
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    image: phpmyadmin
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=mysql
+      - PMA_PORT=3306
+    restart: always
+    ports:
+      - "8081:80"
+    links:
+      - mysql
+
+  web:
+    container_name: bookle-web
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    restart: always
+    volumes:
+      - ./:/var/www/html/bookle
+      - ~/.composer-docker/cache:/root/.composer/cache:delegated
+    extra_hosts:
+      - "bookle.local:127.0.0.1"
+    hostname: bookle.local
+    ports:
+      - "80:80"
+    links:
+      - mysql
