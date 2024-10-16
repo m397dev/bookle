@@ -22,6 +22,8 @@ class Home extends Shop
      */
     public function index(): string
     {
-        return view('shop/home');
+        $data = ['message' => 'Welcome to my Shop'];
+
+        return $this->render('shop/home', $data);
     }
 }

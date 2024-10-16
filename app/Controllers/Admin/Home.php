@@ -22,6 +22,8 @@ class Home extends Admin
      */
     public function index(): string
     {
-        return view('admin/home');
+        $data = ['message' => 'Welcome to Admin dashboard'];
+
+        return $this->render('admin/home', $data);
     }
 }

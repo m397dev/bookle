@@ -8,16 +8,20 @@ use CodeIgniter\HTTP\IncomingRequest;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\Session\Session;
+use CodeIgniter\View\Parser;
 use Config\Services;
 use Psr\Log\LoggerInterface;
 
 /**
- * Class BaseController
+ * Class BaseController.
  *
  * BaseController provides a convenient place for loading components
  * and performing functions that are needed by all your controllers.
  * Extend this class in any new controllers:
+ *
+ * ```
  *     class Home extends BaseController
+ * ```
  *
  * For security be sure to declare any new methods as protected or private.
  */
@@ -46,6 +50,11 @@ abstract class BaseController extends Controller
     protected Session $session;
 
     /**
+     * @var Parser View Parser instance
+     */
+    protected Parser $parser;
+
+    /**
      * Initial.
      */
     public function initController(
@@ -55,5 +64,21 @@ abstract class BaseController extends Controller
     ): void {
         parent::initController($request, $response, $logger);
         $this->session = Services::session();
+        $this->parser  = Services::parser();
+        $this->parser->setConditionalDelimiters('{%', '%}');
+    }
+
+    /**
+     * View parser renderer.
+     */
+    protected function render(
+        string $view,
+        array $data = [],
+        string $context = '',
+        array $options = [],
+        bool $saveData = false
+    ): string {
+        return $this->parser->setData($data, $context)
+            ->render($view, $options, $saveData);
     }
 }
