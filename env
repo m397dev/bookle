@@ -28,6 +28,14 @@ app.forceGlobalSecureRequests = false
 app.appTimezone = 'Asia/Ho_Chi_Minh'
 
 #--------------------------------------------------------------------
+# EMAIL
+#--------------------------------------------------------------------
+
+email.fromEmail = 'bookle.support@gmail.com'
+email.fromName = 'Bookle'
+email.recipients = ''
+
+#--------------------------------------------------------------------
 # DATABASE
 #--------------------------------------------------------------------
 

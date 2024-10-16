@@ -23,6 +23,7 @@
         "ext-zlib": "*",
         "chillerlan/php-qrcode": "^5.0",
         "codeigniter4/framework": "^4.0",
+        "codeigniter4/queue": "dev-develop",
         "codeigniter4/settings": "^2.2",
         "codeigniter4/shield": "^1.1",
         "daycry/cronjob": "^2.2",

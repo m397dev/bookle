@@ -28,7 +28,7 @@ use ReflectionException;
  * }
  * ```
  */
-class BaseEntity extends Entity
+abstract class BaseEntity extends Entity
 {
     /**
      * @var list<string> Custom convert handlers

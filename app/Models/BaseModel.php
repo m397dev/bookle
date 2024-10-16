@@ -24,7 +24,7 @@ use Override;
  * }
  * ```
  */
-class BaseModel extends Model
+abstract class BaseModel extends Model
 {
     /**
      * Called during initialization.
